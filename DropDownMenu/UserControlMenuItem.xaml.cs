@@ -30,5 +30,16 @@ namespace DropDownMenu
 
       this.DataContext = itemMenu;
     }
+    
+    private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (ListViewMenu.SelectedIndex == -1)
+        {
+            return;
+        }
+        _context.SwitchScreen(((SubItem)((ListView)sender).SelectedItem).Screen);
+
+        ListViewMenu.SelectedIndex = -1;
+    }
   }
 }
